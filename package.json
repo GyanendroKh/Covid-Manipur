@@ -4,8 +4,8 @@
   "author": "Gyanendro Khomdram <khgyanendro77@gmail.com>",
   "license": "MIT",
   "private": "true",
-  "workspaces": ["api", "common"],
+  "workspaces": ["api", "common", "mobile"],
   "scripts": {
-    "delete": "rm -rvf node_modules api/node_modules common/node_modules"
+    "delete": "rm -rvf node_modules api/node_modules common/node_modules mobile/node_modules"
   }
 }
