@@ -1,3 +1,1 @@
-const HELLO = 'WORLD';
-
-export default HELLO;
+export * from './types';

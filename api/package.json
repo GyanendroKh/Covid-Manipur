@@ -3,14 +3,21 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "nodemon dist/app.js",
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@covid-manipur/common": "0.0.1"
+    "@covid-manipur/common": "0.0.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
+    "@types/express": "^4.17.7",
     "@types/node": "^14.6.2",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.1",
