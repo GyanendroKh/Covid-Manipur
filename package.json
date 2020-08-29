@@ -1,0 +1,11 @@
+{
+  "name": "covid-manipur",
+  "version": "0.0.1",
+  "author": "Gyanendro Khomdram <khgyanendro77@gmail.com>",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": ["api", "common"],
+  "scripts": {
+    "delete": "rm -rvf node_modules api/node_modules common/node_modules"
+  }
+}
