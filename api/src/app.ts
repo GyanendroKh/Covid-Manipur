@@ -1,28 +1,23 @@
 import 'reflect-metadata';
-import dotenv from 'dotenv';
 import express from 'express';
 import { json } from 'body-parser';
-import { createConnection, getRepository } from 'typeorm';
-import { Total, TimelineData, CaseTypeData } from '@covid-manipur/common';
+import { getRepository } from 'typeorm';
+import {
+  Total,
+  TimelineData,
+  CaseTypeData,
+  districts
+} from '@covid-manipur/common';
 import { Case } from './entity';
-import { IS_PROD } from './constant';
+import { loadEnv, connectToMySql } from './utility';
 
-dotenv.config({
-  debug: !IS_PROD,
-  path: IS_PROD ? '.env' : '.env.local'
-});
+loadEnv();
 
 const app = express();
 const PORT = process.env.PORT || 9090;
 
 (async () => {
-  await createConnection({
-    type: 'mysql',
-    url: process.env.DATABASE_URL,
-    synchronize: true,
-    logging: true,
-    entities: [Case]
-  });
+  await connectToMySql();
 
   app.use(json());
 
@@ -107,7 +102,7 @@ const PORT = process.env.PORT || 9090;
       res.json();
     }
 
-    const innerQueries = Array.from({ length: 8 }, (_, k) => k + 1).map(i => {
+    const innerQueries = districts.map((_, i) => {
       return `(SELECT SUM(${type}) FROM \`case\` WHERE district = ${i} LIMIT 1) as '${i}'`;
     });
 
