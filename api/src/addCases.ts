@@ -1,6 +1,8 @@
 import { districts } from '@covid-manipur/common';
 import { connectToMySql, loadEnv } from './utility';
 import { Case } from './entity';
+import fs from 'fs/promises';
+import path from 'path';
 
 loadEnv();
 
@@ -33,8 +35,25 @@ const generateFakeData = async () => {
   }
 };
 
+const addCases = async () => {
+  const pathToJSON = path.join(__dirname, '..', 'data.json');
+
+  const cases: Case[] = JSON.parse((await fs.readFile(pathToJSON)).toString());
+
+  for (const i of cases) {
+    await i.save();
+    console.log(i);
+  }
+};
+
 (async () => {
   const connection = await connectToMySql();
+
+  try {
+    await addCases();
+  } catch (e) {
+    console.log(e);
+  }
 
   // await generateFakeData();
   connection.close();
