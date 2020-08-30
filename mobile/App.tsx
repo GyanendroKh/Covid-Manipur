@@ -1,24 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { caseApi } from '@covid-manipur/common';
+import React, { FC } from 'react';
+import {
+  DarkTheme as PaperDarkTheme,
+  Provider as PaperProvider
+} from 'react-native-paper';
+import {
+  NavigationContainer,
+  DarkTheme as NavDarkTheme
+} from '@react-navigation/native';
+import Routes from './src/Routes';
 
-console.log(caseApi);
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+const DarkTheme = {
+  ...NavDarkTheme,
+  ...PaperDarkTheme,
+  colors: {
+    ...NavDarkTheme.colors,
+    ...PaperDarkTheme.colors
   }
-});
+};
+
+const App: FC = () => {
+  return (
+    <PaperProvider theme={DarkTheme}>
+      <NavigationContainer theme={DarkTheme}>
+        <Routes />
+      </NavigationContainer>
+    </PaperProvider>
+  );
+};
+
+export default App;
