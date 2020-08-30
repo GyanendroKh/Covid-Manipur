@@ -8,6 +8,7 @@ import {
   DarkTheme as NavDarkTheme
 } from '@react-navigation/native';
 import Routes from './src/Routes';
+import { configureDefaultAxios } from './src/utils';
 
 const DarkTheme = {
   ...NavDarkTheme,
@@ -17,6 +18,8 @@ const DarkTheme = {
     ...PaperDarkTheme.colors
   }
 };
+
+configureDefaultAxios();
 
 const App: FC = () => {
   return (
