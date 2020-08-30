@@ -2,7 +2,13 @@ import React, { FC, useCallback, useState, useEffect, useMemo } from 'react';
 import { ScrollView, RefreshControl } from 'react-native';
 import { CancelTokenSource } from 'axios';
 import { RootNavProps } from '../navigators';
-import { AppBar, CaseTotal, TimelineChart, CaseTypeChart } from '../components';
+import {
+  AppBar,
+  CaseTotal,
+  DevelopedBy,
+  TimelineChart,
+  CaseTypeChart
+} from '../components';
 import {
   Total,
   caseApi,
@@ -52,6 +58,7 @@ const Home: FC<RootNavProps<'Home'>> = ({ navigation }) => {
         {total && <CaseTotal total={total} />}
         {timelineData && <TimelineChart timeline={timelineData} />}
         {caseTypeData && <CaseTypeChart data={caseTypeData} />}
+        {!isLoading && <DevelopedBy />}
       </ScrollView>
     </>
   );
