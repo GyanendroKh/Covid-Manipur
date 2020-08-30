@@ -3,6 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 
 export type RootNavParamList = {
   Home: undefined;
+  About: undefined;
 };
 
 export type RootNavProps<T extends keyof RootNavParamList> = {

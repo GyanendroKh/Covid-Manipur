@@ -11,3 +11,4 @@ export const chartConfig = {
 };
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
+export const GITHUB_URL = 'https://github.com/gyanendrokh/Covid-Manipur';
